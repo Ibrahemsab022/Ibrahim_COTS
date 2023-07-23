@@ -9,6 +9,7 @@
 
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
+#include "defines.h"
 #include <util/delay.h>
 
 #include "DIO_interface.h"
@@ -38,11 +39,11 @@ void CLCD_voidSendCmd(uint8 Copy_u8Cmd)
 {
 
 	/*Set RS pin to low for command mode*/
-	DIO_u8SetPinValue(DIO_u8PORTA, CLCD_RS_PIN, DIO_u8PIN_LOW);
+	DIO_u8SetPinValue(CLCD_CTRL_PORT, CLCD_RS_PIN, DIO_u8PIN_LOW);
 
 #if CLCD_RW_CTRL_EN == ENABLED
 	/*Set RW pin to LOW for write mode*/
-	DIO_u8SetPinValue(DIO_u8PORTA, CLCD_RW_PIN, DIO_u8PIN_LOW);
+	DIO_u8SetPinValue(CLCD_CTRL_PORT, CLCD_RW_PIN, DIO_u8PIN_LOW);
 #endif
 
 #if CLCD_OP_MODE == EIGHT_BIT_MODE
@@ -67,11 +68,11 @@ void CLCD_voidSendData(uint8 Copy_u8Data)
 {
 
 	/*Set RS pin to HIGH for data mode*/
-	DIO_u8SetPinValue(DIO_u8PORTA, CLCD_RS_PIN, DIO_u8PIN_HIGH);
+	DIO_u8SetPinValue(CLCD_CTRL_PORT, CLCD_RS_PIN, DIO_u8PIN_HIGH);
 
 	#if CLCD_RW_CTRL_EN == ENABLED
 	/*Set RW pin to LOW for write mode*/
-	DIO_u8SetPinValue(DIO_u8PORTA, CLCD_RW_PIN, DIO_u8PIN_LOW);
+	DIO_u8SetPinValue(CLCD_CTRL_PORT, CLCD_RW_PIN, DIO_u8PIN_LOW);
 	#endif
 
 #if CLCD_OP_MODE == EIGHT_BIT_MODE
